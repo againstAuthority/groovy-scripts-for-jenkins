@@ -1,6 +1,4 @@
 #! groovy
-import groovy.transform.Undefined.EXCEPTION
-import org.apache.groovy.json.internal.Exceptions
 
 pipeline {
     agent {
@@ -40,6 +38,6 @@ pipeline {
             }
         }
     }
- 
+
 
 }
