@@ -1,12 +1,15 @@
 #! groovy
 
 pipeline{
+    agent{
+        label 'master'
+    }
+
     stages{
-        stage("Checkout"){
-            echo "Checkout..."
-        }
-        stage("Deploy"){
-            echo "Deploy"
+        stage("Stage1"){
+            steps{
+                echo "Stage1"
+            }
         }
     }
 }
