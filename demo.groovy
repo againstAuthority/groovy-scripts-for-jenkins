@@ -31,7 +31,6 @@ pipeline {
             steps {
                 echo "Creating threads dump..."
                 sh label: '', script: 'ps -el | grep java'
-                echo label
             }
         }
         stage("Solving problems with threads") {
