@@ -7,19 +7,31 @@ pipeline {
 
     stages {
         stage("Checkout") {
-            echo "Checkout"
+            steps {
+                echo "Checkout..."
+            }
         }
         stage("Deploy") {
-            echo "Deploying"
+            steps {
+                echo "Deploying..."
+            }
+
         }
         stage("Undeploying modules") {
-            echo "Undeploying"
+
+            steps {
+                echo "Undeploying modules..."
+            }
         }
         stage("Creating threads dump") {
-            echo "Creating threads dump"
+            steps {
+                echo "Creating threads dump"
+            }
         }
         stage("Solving problems with threads") {
-            echo "Solving problems with threads"
+            steps {
+                echo "Solving problems with threads"
+            }
         }
     }
 }
