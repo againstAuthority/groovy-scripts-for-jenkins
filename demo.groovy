@@ -1,37 +1,47 @@
 #! groovy
+import groovy.transform.Undefined.EXCEPTION
+import org.apache.groovy.json.internal.Exceptions
 
 pipeline {
     agent {
         label 'master'
     }
+    try {
+        stages {
+            stage("Checkout") {
+                steps {
+                    echo "Checkout..."
+                    checkout([$class                           : 'GitSCM', branches: [[name: '*/master']],
+                              doGenerateSubmoduleConfigurations: false, extensions: [],
+                              submoduleCfg                     : [],
+                              userRemoteConfigs                : [[url: 'https://github.com/againstAuthority/hello-world-project-for-docker.git']]])
+                }
+            }
+            stage("Deploy") {
+                steps {
+                    echo "Deploying..."
+                }
 
-    stages {
-        stage("Checkout") {
-            steps {
-                echo "Checkout..."
             }
-        }
-        stage("Deploy") {
-            steps {
-                echo "Deploying..."
-            }
+            stage("Undeploying modules") {
 
-        }
-        stage("Undeploying modules") {
-
-            steps {
-                echo "Undeploying modules..."
+                steps {
+                    echo "Undeploying modules..."
+                }
+            }
+            stage("Creating threads dump") {
+                steps {
+                    echo "Creating threads dump"
+                }
+            }
+            stage("Solving problems with threads") {
+                steps {
+                    echo "Solving problems with threads"
+                }
             }
         }
-        stage("Creating threads dump") {
-            steps {
-                echo "Creating threads dump"
-            }
-        }
-        stage("Solving problems with threads") {
-            steps {
-                echo "Solving problems with threads"
-            }
-        }
+    } catch (Exception ex) {
+        echo ex
     }
+
 }
