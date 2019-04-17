@@ -1,15 +1,25 @@
 #! groovy
 
-pipeline{
-    agent{
+pipeline {
+    agent {
         label 'master'
     }
 
-    stages{
-        stage("Stage1"){
-            steps{
-                echo "Stage1"
-            }
+    stages {
+        stage("Checkout") {
+            echo "Checkout"
+        }
+        stage("Deploy") {
+            echo "Deploying"
+        }
+        stage("Undeploying modules") {
+            echo "Undeploying"
+        }
+        stage("Creating threads dump") {
+            echo "Creating threads dump"
+        }
+        stage("Solving problems with threads") {
+            echo "Solving problems with threads"
         }
     }
 }
