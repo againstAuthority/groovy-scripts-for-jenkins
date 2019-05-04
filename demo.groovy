@@ -31,36 +31,12 @@ pipeline {
                 }
             }
         }
-        stage("Install hello-module project with maven") {
-            steps {
-                echo "Installing hello-module project with maven..."
-            }
-
-        }
         stage("Deploy") {
             steps {
                 echo "Deploying..."
+                ansiblePlaybook disableHostKeyChecking: true, inventory: 'ansiblebuildDir/inventories/', playbook: 'ansiblebuildDir/demo', sudo: true
             }
 
-        }
-        stage("Undeploying modules") {
-
-            steps {
-                echo "Undeploying modules..."
-            }
-        }
-        stage("Creating threads dump") {
-            steps {
-                echo "Creating threads dump..."
-                sh label: '', script: 'ps -el | grep java'
-            }
-        }
-        stage("Solving problems with threads") {
-            steps {
-                echo "Solving problems with threads"
-            }
         }
     }
-
-
 }
