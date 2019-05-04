@@ -35,7 +35,7 @@ pipeline {
             steps {
                 echo "Deploying..."
 //
-                ansiblePlaybook become: true, becomeUser: 'dmitry', inventory: 'ansible', playbook: 'ansible'
+                ansiblePlaybook become: true, becomeUser: 'dmitry', inventory: 'ansiblebuildDir/demo.yml', playbook: 'ansiblebuildDir/inventories'
             }
 
         }
