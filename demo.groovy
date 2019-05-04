@@ -37,7 +37,7 @@ pipeline {
 //
                 ansiblePlaybook colorized: true,
                         credentialsId: 'af9c6101-8e32-4298-a090-27b434894dca',
-                        hostKeyChecking: false, inventory: 'ansiblebuildDir/inventories/', playbook: 'ansiblebuildDir/demo.yml'
+                        disableHostKeyChecking: true, inventory: 'ansiblebuildDir/inventories/', playbook: 'ansiblebuildDir/demo.yml'
             }
 
         }
