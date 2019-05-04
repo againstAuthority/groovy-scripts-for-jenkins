@@ -34,7 +34,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 echo "Deploying..."
-                ansiblePlaybook disableHostKeyChecking: true, inventory: 'ansiblebuildDir/inventories/', playbook: 'ansiblebuildDir/demo', sudo: true
+                ansiblePlaybook disableHostKeyChecking: true, inventory: 'ansiblebuildDir/inventories/', playbook: 'ansiblebuildDir/demo.yml', sudo: true
             }
 
         }
