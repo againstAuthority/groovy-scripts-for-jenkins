@@ -1,7 +1,7 @@
 #! groovy
 
-buildDirHelloModule = "build_hello_module"
-buildDirMavenHelloModule = "build_maven_hello_module"
+helloModulebuildDir = "build_hello_module"
+ansiblebuildDir = "ansiblebuildDir"
 
 pipeline {
     agent {
@@ -9,17 +9,29 @@ pipeline {
     }
 
     stages {
-        stage("Checkout projects from git") {
-            steps {
-                echo "Checkout project from git to folder ${buildDirHelloModule}:"
-                dir("${buildDirHelloModule}") {
+        stage("Checkout hello-module project from git") {
+                echo "Checkout project from git to folder ${helloModulebuildDir}:"
+                dir("${helloModulebuildDir}") {
                     checkout([$class                           : 'GitSCM', branches: [[name: '*/master']],
                               doGenerateSubmoduleConfigurations: false, extensions: [],
                               submoduleCfg                     : [],
                               userRemoteConfigs                : [[url: 'https://github.com/againstAuthority/hello-world-project-for-docker.git']]])
                 }
-
+        }
+        stage("Checkout ansible project from git") {
+            echo "Checkout ansible project from git to folder ${ansiblebuildDir}:"
+            dir("${ansiblebuildDir}") {
+                checkout([$class                           : 'GitSCM', branches: [[name: '*/master']],
+                          doGenerateSubmoduleConfigurations: false, extensions: [],
+                          submoduleCfg                     : [],
+                          userRemoteConfigs                : [[url: 'https://github.com/againstAuthority/ansible.git']]])
             }
+        }
+        stage("Install hello-module project with maven") {
+            steps {
+                echo "Installing hello-module project with maven..."
+            }
+
         }
         stage("Deploy") {
             steps {
