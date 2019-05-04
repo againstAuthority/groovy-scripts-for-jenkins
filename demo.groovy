@@ -34,7 +34,10 @@ pipeline {
         stage("Deploy") {
             steps {
                 echo "Deploying..."
-                ansiblePlaybook becomeUser: null, credentialsId: 'dmitry', inventory: 'ansiblebuildDir/inventories/', playbook: 'ansiblebuildDir/demo.yml', sudoUser: null
+                ansiblePlaybook credentialsId: '74c85827-2360-445c-afdd-002a45ccede4',
+                        inventory: 'ansiblebuildDir/inventories/',
+                        playbook: 'ansiblebuildDir/demo.yml'
+
 //                ansiblePlaybook colorized: true, credentialsId: 'af9c6101-8e32-4298-a090-27b434894dca',
 //                        disableHostKeyChecking: true, inventory: 'ansiblebuildDir/inventories/', playbook: 'ansiblebuildDir/demo.yml'
             }
