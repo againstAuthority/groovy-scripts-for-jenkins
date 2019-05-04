@@ -35,9 +35,7 @@ pipeline {
             steps {
                 echo "Deploying..."
 //
-                ansiblePlaybook colorized: true,
-                        credentialsId: 'af9c6101-8e32-4298-a090-27b434894dca',
-                        disableHostKeyChecking: true, inventory: 'ansiblebuildDir/inventories/', playbook: 'ansiblebuildDir/demo.yml'
+                ansiblePlaybook become: true, becomeUser: 'dmitry', inventory: 'ansible', playbook: 'ansible'
             }
 
         }
