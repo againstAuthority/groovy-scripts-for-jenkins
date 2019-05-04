@@ -36,10 +36,8 @@ pipeline {
                 echo "Deploying..."
                 ansiblePlaybook colorized: true,
                         credentialsId: '68f91c26-4f0f-4c07-802a-40012dee44b7',
-                        disableHostKeyChecking: true,
                         inventory: 'ansiblebuildDir/inventories/',
-                        playbook: 'ansiblebuildDir/demo.yml',
-                        sudoUser: null
+                        playbook: 'ansiblebuildDir/demo.yml'
             }
 
         }
